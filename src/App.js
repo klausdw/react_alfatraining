@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
-function App() {
+import PatientList from './components/Liste/patientenList'
+import PatientDetails from './components/Liste/patientenDetails'
+import Impressum from './components/impressum'
+import Datenschutz from './components/datenschutz'
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div className="ui stackable menu">
+        <NavLink to="/" className="item" activeClassName="active">Home</NavLink>
+        <NavLink to="/impressum" className="item" >Impressum</NavLink>
+        <NavLink to="/datenschutz" className="item" >Datenschutz</NavLink>
+      </div>
 
-export default App;
+      <Switch>
+
+        <Route path='/patienten/:id'>
+          <PatientDetails />
+        </Route>
+
+
+        <Route path='/404'>
+          <p>404</p>
+        </Route>
+
+        <Route path='/impressum'>
+          <Impressum />
+        </Route>
+
+        <Route path='/datenschutz'>
+          <Datenschutz />
+        </Route>
+
+        <Route path='/'>
+          <PatientList />
+        </Route>
+
+
+      </Switch>
+    </Router>
+  )
+}
