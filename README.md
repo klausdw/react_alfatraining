@@ -1,5 +1,5 @@
 ## CSS
-yarn add semantic-ui
+yarn add semantic-ui-react semantic-ui-css
 
 ## Linter
 yarn add --dev eslint-plugin-react-hooks eslint-plugin-react babel-eslint
